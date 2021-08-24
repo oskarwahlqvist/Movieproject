@@ -1,0 +1,29 @@
+﻿
+<div class="col-sm-12 jumbotron" style="background-color:navajowhite">
+    <div class="col-sm-12"><b>Order No: </b>@Model.OrderId</div>
+    <div class="col-sm-12">
+        <span class="col-sm-4"><b>Movie</b></span>
+        <span class="col-sm-4"><b>No.of Copies</b></span>
+        <span class="col-sm-4"><b>Price</b></span>
+        <span class="col-sm-4"><label></label></span>
+    </div>
+
+    <br />
+    @foreach (var item in Model.OrderHistoryList)
+    {
+        <div class="col-sm-12">
+            <span class="col-sm-4"><b>@item.MovieTitle</b></span>
+            <span class="col-sm-4"><b>@item.NoofCopies</b></span>
+            <span class="col-sm-4"><b>@item.Price</b></span>
+
+        </div>
+
+
+    }
+    <div><span class="col-sm-4"><label></label></span></div>
+    <div class="col-sm-12">
+        <span class="col-sm-4"><b>Order Date:</b>@Model.OrderDate</span>
+        <div><span class="col-sm-3"><label></label></span></div>
+        <span class="col-sm-4"><b>Total Price:</b><b>@Model.TotalPrice</b></span>
+    </div>
+</div>

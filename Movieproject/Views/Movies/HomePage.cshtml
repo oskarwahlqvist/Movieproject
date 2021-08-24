@@ -1,0 +1,690 @@
+﻿@using Movieproject.Models;
+
+@model dynamic
+@{ var result = Model as Tuple<List<Movie>, List<Movie>, List<Movie>, List<Movie>>;}
+    <head>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    </head>
+@{
+    ViewBag.Title = "HomePage";
+    string[] ImgArray = { " ", " ", " ", " ", " ", " " };
+    string[] TitleArray = { " ", " ", " ", " ", " ", " " };
+
+    string[] CheapestTitleArray = { " ", " ", " ", " ", " ", " " };
+    string[] CheapestImgArray = { " ", " ", " ", " ", " ", " " };
+
+    var x = 0;
+    var a = 0;
+}
+<div class="panel panel-default col-sm-5 col-md-4 col-lg-3" style="width:1030px; background-color:cornsilk;">
+
+    @*<div>*@
+    <div>
+        
+    </div>
+    @*The Array that hold the carousels values ----------------------------*@
+    @foreach (var item in result.Item2)
+    {
+        TitleArray[x] = item.Title;
+        ImgArray[x] = item.ImageUrl;
+        @*<div>
+                 Checked that Array was working
+                @Html.DisplayFor(modelItem => ImgArray[x])
+            </div>*@
+        x++;
+    }
+    @*The Carousel Code ----------------------------------------------------*@
+    <div class="odiv1">
+            <div class="odiv11" style="text-align:center;">
+                <br />
+                <h1>Welcome to MovieShop!</h1>
+                A Big Thanks To Our Top Customer <b>@ViewBag.CustName2</b>!
+            </div>
+        <div class="odiv2">
+            <div>
+                <br />
+                <div style="text-align:center;">
+                    @*<h1>Welcome to MovieShop!</h1>
+                    A Big Thanks To Our Top Customer <b>@ViewBag.CustName2</b>*@
+                    @*<br /><br /><br />*@
+                    <div class="odiv21">
+                        <div>
+                            <h2>Why do we use it?</h2>
+
+                            Contrary to popular belief, Lorem Ipsum is not simply random text.
+                            It has roots in a piece of classical Latin literature from 45 BC, making it over
+                            2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+                            looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage,
+                            and going through the cites of the word in classical literature, discovered the undoubtable
+                            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum"
+                            (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory
+                            of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor
+                            sit amet..", comes from a line in section 1.10.32.
+                        </div>
+                        <br />
+                        <div>
+                            <h2>Where can I get it?</h2>
+
+                            Contrary to popular belief, Lorem Ipsum is not simply random text.
+                            It has roots in a piece of classical Latin literature from 45 BC, making it over
+                            2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+                            looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage,
+                            and going through the cites of the word in classical literature, discovered the undoubtable
+                            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum"
+                            (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory
+                            of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor
+                            sit amet..", comes from a line in section 1.10.32.
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="odiv3">
+            <br />
+            <h2 style="text-align:center;">New Titles! </h2>
+            <div class="container">
+                <div>
+                    @*<h2 style="text-align:center;">New Titles! </h2>*@
+                </div>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:400px;">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="3" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="4" class="active"></li>
+                    </ol>
+                    <div class="carousel-inner">
+
+                        <div class="item active">
+                            <img src="@ImgArray[0]" alt="Los Angeles" style="width:100%;">
+                            <div class="carousel-caption">
+                                <label style="background-color:white; color:black"> @TitleArray[0] </label>
+                            </div>
+                        </div>
+
+                        @for (int y = 1; y < 5; y++)
+                        {
+                            <div class="item">
+                                <img src="@ImgArray[y]" alt="Chicago" style="width:100%;">
+                                <div class="carousel-caption">
+                                    <label style="background-color:white; color:black;"> @TitleArray[y] </label>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+     
+    </div>
+
+    @*<div>
+        <br /><br /><br />
+    </div>*@
+
+    @*<div>
+        <br /><br /><br />
+    </div>*@
+
+    <div>
+        @*-----------------------------------------MovieTopFive-------------------------------------------------------------*@
+        <div style="text-align:center">
+            <h2>Our Top 5 Movies Right Now!</h2>
+            <br />
+        </div>
+        <div>
+            <table>
+                <tr>
+                    @foreach (var item in result.Item1)
+                    {
+
+                        <td><img src="@item.ImageUrl" alt="No Image" class="img-circle" /></td>
+                    }
+                </tr>
+                <tr>
+                    @foreach (var item in result.Item1)
+                    {
+                        <td style="text-align:center; color:black;"><b>@Html.DisplayFor(modelItem => item.Title)</b></td>
+                    }
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <br /><br /><br />
+    </div>
+    <div>
+        @*---------------------------------------MovieOldestList---------------------------------------------------------------*@
+        <div style="text-align:center">
+            <h2>Some Old Classics!</h2>
+            <br />
+        </div>
+        <div>
+            <table>
+                <tr>
+                    @foreach (var item in result.Item3)
+                    {
+
+                        <td><img src="@item.ImageUrl" alt="No Image" class="img-circle" /></td>
+                    }
+                </tr>
+                <tr>
+                    @foreach (var item in result.Item3)
+                    {
+                        <td style="text-align:center; color:black;"><b>@Html.DisplayFor(modelItem => item.Title)</b></td>
+                    }
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <br /><br /><br />
+    </div>
+    @*---------------------------------------MovieCheapestList---------------------------------------------------------------*@
+    <div style="text-align:center">
+        <h2>Some Good Deals Right Now!</h2>
+        <br />
+    </div>
+    <div>
+        <table>
+            <tr>
+                @foreach (var item in result.Item4)
+                {
+
+                    <td><img src="@item.ImageUrl" alt="No Image" class="img-circle" /></td>
+                }
+            </tr>
+            <tr>
+                @foreach (var item in result.Item4)
+                {
+                    <td style="text-align:center; color:black;"><b>@Html.DisplayFor(modelItem => item.Title)</b></td>
+                }
+            </tr>
+        </table>
+    </div>
+    <div>
+        <br /><br /><br />
+    </div>
+
+
+</div>
+
+@*------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------*@
+
+@*@using Movieproject.Models;
+
+@model dynamic
+@{ var result = Model as Tuple<List<Movie>, List<Movie>, List<Movie>, List<Order>, List<Movie>>;}*@
+
+
+
+@{
+    //ViewBag.Title = "HomePage";
+    //string[] ImgArray = { " ", " ", " ", " ", " ", " " };
+    //string[] TitleArray = { " ", " ", " ", " ", " ", " " };
+
+    //string[] CheapestTitleArray = { " ", " ", " ", " ", " ", " " };
+    //string[] CheapestImgArray = { " ", " ", " ", " ", " ", " " };
+
+    //var x = 0;
+    //var a = 0;
+}
+
+@*@foreach (var item in result.Item5)
+    {
+
+        @Html.DisplayFor(modelItem => item.Title)
+    }
+<h2>HomePage</h2>
+@ViewBag.Oskar2*@
+
+@*<div><br /></div>
+    @ViewBag.CustName2
+<div><br /></div>*@
+
+@*<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>*@
+@*@foreach (var item in result.Item4)
+        {
+        <div>
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </div>
+    }
+
+    @foreach (var item in result.Item3)
+    {
+        <div>
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+            @Html.DisplayFor(modelItem => item.CustomerId)
+        </div>
+    }*@
+@*<div>
+    <br />
+    <br />
+
+</div>
+<div>
+    <br />
+    <br />
+</div>
+<div>
+
+    Oldest Movies
+    <br />
+    @foreach (var item in result.Item2)
+    {
+
+        <img src="@item.ImageUrl" alt="No Image" class="img-circle" />
+    }
+
+</div>
+
+Ordered by Titles:
+<table border="1">
+
+    @foreach (var item in result.Item1)
+    {
+        <tr>
+            <th>@Html.DisplayFor(modelItem => item.Title) </th>
+
+        </tr>
+        <tr>
+            <td><img src="@item.ImageUrl" alt="No Image" class="img-circle" /></td>
+
+        </tr>
+    }
+
+    @foreach (var item in result.Item2)
+    {
+
+        CheapestTitleArray[a] = item.Title;
+        CheapestImgArray[a] = item.ImageUrl;
+        a++;
+    }
+</table>
+<div>
+    <br />
+    <br />
+</div>
+OSKOSKAROSRK
+<div>
+    <br />
+</div>
+<table>
+    <tr>
+        @foreach (var item in result.Item2)
+        {
+        <th> @Html.DisplayFor(modelItem => item.Title)</th>
+        }
+    </tr>
+
+    <tr>
+        @foreach (var item in result.Item2)
+        {
+        <td><img src="@item.ImageUrl" alt="No Image" class="img-circle" /></td>
+        }
+    </tr>
+
+</table>
+END OSKARS
+
+<table>
+
+    <tr>
+        <td> <img src="@CheapestImgArray[0]" alt="Los Angeles" style="width:100%" ; class="img-circle"></td>
+        <td> <img src="@CheapestImgArray[1]" alt="Los Angeles" style="width:100%" ; class="img-circle"></td>
+        <td> <img src="@CheapestImgArray[2]" alt="Los Angeles" style="width:100%" ; class="img-circle"></td>
+        <td> <img src="@CheapestImgArray[3]" alt="Los Angeles" style="width:100%" ; class="img-circle"></td>
+        <td> <img src="@CheapestImgArray[4]" alt="Los Angeles" style="width:100%" ; class="img-circle"></td>
+    </tr>
+    <tr>
+        <th style="text-align:center">@CheapestTitleArray[0]</th>
+        <th style="text-align:center">@CheapestTitleArray[1]</th>
+        <th style="text-align:center">@CheapestTitleArray[2]</th>
+        <th style="text-align:center">@CheapestTitleArray[3]</th>
+        <th style="text-align:center">@CheapestTitleArray[4]</th>
+    </tr>
+<img src="@ImgArray[0]" alt="Los Angeles" style="width:100%;">
+</table>*@
+
+
+
+@*<div>
+    <br /> <br />
+</div>
+Oldest Movies:
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th><b>Release Year</b></th>
+        <th>Price</th>
+    </tr>
+    @foreach (var item in result.Item2)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Title) </td>
+            <td>@Html.DisplayFor(modelItem => item.ReleaseYear) </td>
+            <td>@Html.DisplayFor(modelItem => item.Price) </td>
+        </tr>
+    }
+</table>
+
+<div>
+    <br /> <br /> <br />
+</div>
+    Cheapest Movies:
+<table border="1">
+
+    @foreach (var item in result.Item3)
+    {
+
+        <th>@Html.DisplayFor(modelItem => item.Title)</th>
+
+        <tr><td><img src="@item.ImageUrl" alt="No Image" /></td></tr>
+
+
+
+    }
+</table>
+<div>
+    <br /> <br /> <br />
+</div>
+Most Expensive Order:
+@foreach (var item in result.Item4)
+    {
+        <div>
+            @Html.DisplayFor(modelItem => item.Customer.FirstName)
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </div>
+    }
+
+
+<div>
+    <br />
+</div>
+
+<div>
+    <br />
+</div>
+@foreach (var item in result.Item1)
+{
+    TitleArray[x] = item.Title;
+    ImgArray[x] = item.ImageUrl;-->
+    <div>
+            @Html.DisplayFor(modelItem => ImgArray[x])
+        </div>
+x++;
+}
+<img src="@item.ImageUrl" alt="No Image" />*@
+@*<div class="container">*@
+    @*<h2>
+        Carousel
+@TitleArray[0]
+</h2>*@
+@*<div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:400px">
+ Indicators 
+<ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="2" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="3" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="4" class="active"></li>
+</ol>
+<div class="carousel-inner">
+
+    <div class="item active">
+        <img src="@ImgArray[0]" alt="Los Angeles" style="width:100%;">
+        <div class="carousel-caption">
+            <label style="background-color:white; color:black"> @TitleArray[0] </label>
+        </div>
+    </div>
+
+    @for (int y = 1; y < 5; y++)
+    {
+        <div class="item">
+            <img src="@ImgArray[y]" alt="Chicago" style="width:100%;">
+            <div class="carousel-caption">
+                <label style="background-color:white; color:black;"> @TitleArray[y] </label>
+
+            </div>
+        </div>
+    }
+
+</div>
+ Left and right controls 
+<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>*@
+@*------------------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------------------*@
+
+@*<div class="container">
+        <h2>
+            Carousel
+            @TitleArray[0]
+        </h2>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:200px">
+             Indicators
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+                <li data-target="#myCarousel" data-slide-to="4"></li>
+            </ol>
+
+             Wrapper for slides
+            <div class="carousel-inner">
+
+                <div class="item active">
+                    <img src="@ImgArray[0]" alt="Los Angeles" style="width:100%;">
+                    <div class="carousel-caption">
+                        <h3>@TitleArray[0]</h3>
+                        <p>LA is always so much fun!</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="@ImgArray[1]" alt="Chicago" style="width:100%;">
+                    <div class="carousel-caption">
+                        <h3>@TitleArray[1]</h3>
+                        <p>Thank you, Chicago!</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="@ImgArray[2]" alt="New York" style="width:100%;">
+                    <div class="carousel-caption">
+                        <h3>@TitleArray[2]</h3>
+                        <p>We love the Big Apple!</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="@ImgArray[3]" alt="Osk" style="width:100%;">
+                    <div class="carousel-caption">
+                        <h3>@TitleArray[3]</h3>
+                        <p>We love the Big Apple!</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="@ImgArray[4]" alt="O" style="width:100%;">
+                    <div class="carousel-caption">
+                        <h3>@TitleArray[4]</h3>
+                        <p>We love the Big Apple!</p>
+                    </div>
+                </div>
+
+            </div>
+
+             Left and right controls
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div><div class="container">*@
+    @*<h2>
+    </h2>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:200px">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+
+        <div class="carousel-inner">
+
+            <div class="item active">
+                <img src="@ImgArray[0]" alt="Los Angeles" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="@ImgArray[1]" alt="Chicago" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="@ImgArray[2]" alt="New York" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="@ImgArray[3]" alt="Osk" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="@ImgArray[4]" alt="O" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+        </div>
+
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only"></span>
+        </a>
+    </div>
+</div><div class="container">
+    <h2>
+    </h2>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:200px">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+
+        <div class="carousel-inner">
+
+            <div class="item active">
+                <img src="@ImgArray[0]" alt="Los Angeles" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="@ImgArray[1]" alt="Chicago" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="@ImgArray[2]" alt="New York" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="@ImgArray[3]" alt="Osk" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="@ImgArray[4]" alt="O" style="width:100%;">
+                <div class="carousel-caption">
+                    <h3></h3>
+                    <p></p>
+                </div>
+            </div>
+
+        </div>
+
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only"></span>
+        </a>
+    </div>
+</div>*@

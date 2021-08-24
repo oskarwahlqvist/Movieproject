@@ -1,0 +1,15 @@
+﻿
+
+@{
+    ViewBag.Title = "Created";
+}
+
+<h2>Created</h2>
+
+User Created!
+<br />
+<br />
+<h2>Successfully registered with the email @ViewBag.Email!</h2>
+Please click on <b>Proceed</b> to continue.
+<button onclick="location.href='@Url.Action("DisplayCart","Movies",new { IsOrder = 0 },null)'">Back to Cart</button>
+<button class="btn btn-success" onclick="location.href='@Url.Action("DisplayCart","Movies",new { IsOrder = 1 })'">Proceed</button>

@@ -1,0 +1,177 @@
+﻿/*body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}*/
+
+/* Set padding to keep content from hitting the edges */
+/*.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}*/
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+/*.dl-horizontal dt {
+    white-space: normal;
+}*/
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,
+select,
+textarea {
+    max-width: 280px;
+}
+img{
+    height:200px;
+    width:200px;
+}
+div{
+    word-wrap:break-word;
+}
+
+.glyphicon {
+    
+}
+
+.glyphicon.glyphicon-shopping-cart {
+        
+       
+}
+.spancls{
+
+
+}
+
+.wordbrk{
+    word-wrap: break-word;
+    
+}
+span {
+    word-wrap: break-word;
+}*/
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}
+/*Added below properties for word wrapping of td cells(in ref. to Movies Index)*/
+table {
+    word-wrap: break-word;
+    table-layout: fixed;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+a {
+    /*color: white;*/
+    color:black;
+}
+
+.spancls {
+    word-wrap: break-word;
+    /*color: white;*/
+    font-weight: bold;
+    font-size: small;
+    background-color: #535c68;
+    padding: 3px;
+}
+
+.panelbdylarge {
+    width: 350px;
+    height: 350px;
+    /*color: #0c2461;*/
+}
+
+.panelbdysmall {
+    width: 250px;
+    height: 350px;
+    /*color: #0c2461*/;
+}
+
+.panelsmall {
+    width: 300px;
+    border: solid 3px;
+    background-color: cadetblue;
+    margin: 15px
+}
+
+.panellarge {
+    width: 400px;
+    border: solid 3px;
+    background-color: cadetblue;
+    margin: 15px
+}
+
+span {
+    word-wrap: break-word;
+}
+
+.infodiv {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 40px;
+    padding: 10px;
+}
+.odiv1{
+    width:1000px;
+    height:1000px;
+    /*background-color:aqua;*/
+}
+.odiv11 {
+    width: 1000px;
+    height: 150px;
+    /*background-color:aqua;*/
+}
+.odiv2 {
+    float: left;
+    width: 570px;
+    height: 1000px;
+    /*background-color: red;*/
+}
+.odiv21 {
+    align-content:center;
+    margin-left:40px;
+    width: 500px;
+    height: 500px;
+    /*background-color: red;*/
+}
+.odiv3 {
+    margin: auto;
+    float: right;
+    width: 430px;
+    height: 1000px;
+    /*background-color:yellow;*/
+}
+
+/*#container{
+    align-content:center;
+    align-items:center;
+    align-self:center;
+}*/
+

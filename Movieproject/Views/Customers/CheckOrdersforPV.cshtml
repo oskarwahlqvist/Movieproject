@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Movieproject.Models.ViewModels.OrderHistoryPVVM>
+
+<form>
+    <div class="col-sm-12">
+        <label>Email:</label>
+        <input type="text" placeholder="Enter Your Email" name="email" />
+        <button>Check Orders</button>
+    </div>
+    <div>
+    <label> </label>
+    </div>
+
+    @if (Model.Count() > 0)
+    {
+        <div class="col-sm-12" style="margin-top:20px;height:40px;padding:10px">Hello @ViewBag.CustomerName! Your Orders are:</div>
+        @*<div class="col-sm-12 bg-primary" style="margin-bottom:20px;height:40px;padding:10px"></div>*@
+        foreach (var order in Model)
+        {
+
+            @Html.Partial("_CheckOrdersforPV", order);
+
+
+        }
+
+    }
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@{
+    ViewBag.Title = "CheckOrdersforPV";
+}
+
+<h2>CheckOrdersforPV</h2>
+

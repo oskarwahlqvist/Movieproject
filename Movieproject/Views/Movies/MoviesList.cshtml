@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Movieproject.Models.Movie>
+
+@{
+    ViewBag.Title = "MoviesList";
+}
+<head>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            if (sessionStorage['MovieListPage'] == document.URL) {
+                $(document).scrollTop(sessionStorage['MovieListscrollTop']);
+            }
+        });
+
+        $(document).scroll(function () {
+
+            sessionStorage['MovieListPage'] = document.URL;
+            sessionStorage['MovieListscrollTop'] = $(document).scrollTop();
+        });
+    </script>
+</head>
+    @if (ViewBag.Count == 0)
+    {
+        if (ViewBag.Flag == 1)
+        {
+            <div style="color:darkred"><h3>Please enter some title to search!</h3></div>
+        }
+        else
+        {
+            <div style="color:darkred"><h3>No results found</h3></div>
+        }
+    }
+    else
+    {
+        <div class="col-sm-12">
+            @foreach (var movie in Model)
+            {
+                @Html.Partial("_MoviesList", movie)
+            }
+        </div>
+    }
+ 
+
+
+

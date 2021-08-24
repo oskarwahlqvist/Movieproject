@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "SubmitOrder";
+}
+
+
+    <div class="jumbotron">
+        <h2 style="color:green;">Successfully placed your order! </h2>
+        <h4>Your Order number is: @ViewBag.OrderId</h4>
+        @*<button onclick="location.href='@Url.Action("Movieslist","Movies")'">Continue Shopping</button>*@
+    <div style="text-align:end"><button class="btn btn-primary" onclick="location.href='@Url.Action("","")'">Continue Shopping</button></div>
+
+    </div>

@@ -1,0 +1,30 @@
+﻿
+@{int OrdId = ViewBag.OrderId; }
+
+<div class="col-sm-12 jumbotron" style="background-color:navajowhite">
+    <div class="col-sm-12"><b>Order No: </b>@orderid</div>
+    <div class="col-sm-12">
+        <span class="col-sm-1"><b>Movie</b></span>
+        <span class="col-sm-1"><b>No.of Copies</b></span>
+        <span class="col-sm-1"><b>Price</b></span>
+
+    </div>
+    @foreach (var item in Model.Where(m => m.OrderId == orderid))
+    {
+        <div class="col-sm-12">
+            <span class="col-sm-4"><b>@item.MovieTitle</b></span>
+            <span class="col-sm-4"><b>@item.NoofCopies</b></span>
+            <span class="col-sm-4"><b>@item.Price</b></span>
+        </div>
+
+    }
+    @{ 
+        var orddt = Model.Where(m => m.OrderId == OrdId).Select(m => m.OrderDate).FirstOrDefault();
+    }
+    <div class="col-sm-12">
+        <span class="col-sm-7"><b>Order Date:</b>@Model.Where(m => m.OrderId == orderid).Select(m => m.OrderDate).FirstOrDefault()</span>
+        <span class="col-sm-7"><b>Total Price:</b>@Model.Where(m => m.OrderId == orderid).Select(m => m.TotalPrice).FirstOrDefault()</span>
+    </div>
+</div>
+
+
